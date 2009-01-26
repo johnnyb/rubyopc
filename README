@@ -19,27 +19,16 @@ The LGPL is in the file LGPL.txt and the GPL is in the file GPL.txt .
 
 = RubyOPC 
 
-== Download
-
-Available from subversion:
-
-	http://rubyopc.googlecode.com/svn/trunk/
-
 == Installation
 
-=== From Subversion
-
-Check out the source from subversion:
-
-  > svn co http://rubyopc.googlecode.com/svn/trunk/
+Check out the source from git:
+  > git clone git://github.com/johnnyb/rubyopc.git
 
 === As a Rails plugin
 
-RubyOPC includes an init.rb file for Rails, so that it will automatically load if installed
-as a plugin.  Run the following command from the root directory of your Rails project to install
-ActiveShipping as a Rails plugin:
+RubyOPC includes an init.rb file for Rails, so that it will automatically load if installed as a plugin.  Run the following command from the root directory of your Rails project to install RubyOPC as a Rails plugin:
 
-  > script/plugin install http://rubyopc.googlecode.com/svn/trunk/rubyopc
+  > script/plugin install git://github.com/johnnyb/rubyopc.git
 
 == Sample Usage
   # This creates a minimal docx document
