@@ -1,0 +1,88 @@
+= Copyright Notice and Legal Information
+
+RubyOPC is Copyright 2009 New Medio.
+
+RubyOPC is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+The LGPL is in the file LGPL.txt and the GPL is in the file GPL.txt .
+
+= RubyOPC 
+
+== Download
+
+Available from subversion:
+
+	http://rubyopc.googlecode.com/svn/trunk/
+
+== Installation
+
+=== From Subversion
+
+Check out the source from subversion:
+
+  > svn co http://rubyopc.googlecode.com/svn/trunk/
+
+=== As a Rails plugin
+
+RubyOPC includes an init.rb file for Rails, so that it will automatically load if installed
+as a plugin.  Run the following command from the root directory of your Rails project to install
+ActiveShipping as a Rails plugin:
+
+  > script/plugin install http://rubyopc.googlecode.com/svn/trunk/rubyopc
+
+== Sample Usage
+  # This creates a minimal docx document
+ 
+  OpenPackagingConventions::Package.with_package("test.docx") do |p|
+    p.add_part("/word/document.xml", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument", "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml", <<EOF)
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <w:document xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml">
+    <w:body>
+      <w:p w:rsidR="00EA68DC" w:rsidRPr="00C703AC" w:rsidRDefault="00EA68DC" w:rsidP="00EA68DC">
+        <w:pPr>
+          <w:rPr>
+            <w:lang w:val="es-ES_tradnl"/>
+          </w:rPr>
+        </w:pPr>
+        <w:r>
+          <w:t>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc at risus vel erat tempus posuere. Aenean non ante. Suspendisse vehicula dolor sit amet odio. Sed at sem. Nunc fringilla. Etiam ut diam. Nunc diam neque, adipiscing sed, ultrices a, pulvinar vitae, mauris. Suspendisse at elit vitae quam volutpat dapibus. Phasellus consequat magna in tellus. Mauris mauris dolor, dapibus sed, commodo et, pharetra eget, diam.
+          </w:t>
+        </w:r>
+        <w:r w:rsidRPr="00C703AC">
+          <w:rPr>
+            <w:lang w:val="es-ES_tradnl"/>
+          </w:rPr>
+          <w:t>
+            Nullam consequat lacus vitae mi. Sed tortor risus, posuere sed, condimentum pellentesque, pharetra eu, nisl.
+          </w:t>
+        </w:r>
+      </w:p>
+    </w:body>
+  </w:document>
+  EOF
+
+    p.add_part_to("/word/document.xml", "/word/styles.xml", "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles", "application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml", <<EOF)
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <w:styles xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+    <w:style w:type="paragraph" w:styleId="Normal">
+      <w:name w:val="Normal" />
+      <w:rPr>
+        <w:b />
+      </w:rPr>
+    </w:style>
+  </w:styles>
+  EOF
+  
+  end
